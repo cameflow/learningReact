@@ -4,9 +4,11 @@ import './index.css';
 import { ButtonToolbar, MenuItem, DropdownButton } from 'react-bootstrap';
 
 class Main extends React.Component{
+
+
   constructor(){
     super();
-
+    
     this.speed = 100;
     this.rows = 30;
     this.cols = 50;
@@ -59,6 +61,7 @@ class Main extends React.Component{
 	}
 
   // Function for making all the squares in the grid dead
+  // It will also stop the interval timer
   clear = () => {
     clearInterval(this.intervalId);
 		var grid = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
@@ -205,10 +208,8 @@ class Box extends React.Component {
 // Button component
 // Section of the page with all the buttons
 class Buttons extends React.Component {
-	handleSelect = (evt) => {
-		this.props.gridSize(evt);
-	}
 
+  // All the buttons using Bootstrap
 	render() {
 		return (
 			<div className="center">
@@ -222,30 +223,16 @@ class Buttons extends React.Component {
 					<button className="btn btn-default" onClick={this.props.clear}>
 					  Clear
 					</button>
-					{/* <button className="btn btn-default" onClick={this.props.slow}>
-					  Slow
-					</button>
-					<button className="btn btn-default" onClick={this.props.fast}>
-					  Fast
-					</button>*/}
 					<button className="btn btn-default" onClick={this.props.seed}>
 					  Seed
 					</button>
-					{/* <DropdownButton
-						title="Grid Size"
-						id="size-menu"
-						onSelect={this.handleSelect}
-					>
-						<MenuItem eventKey="1">20x10</MenuItem>
-						<MenuItem eventKey="2">50x30</MenuItem>
-						<MenuItem eventKey="3">70x50</MenuItem>
-					</DropdownButton> */}
 				</ButtonToolbar>
 			</div>
 			)
 	}
 }
 
+// Helper function to clone an Array
 function arrayClone(arr) {
 	return JSON.parse(JSON.stringify(arr));
 }
