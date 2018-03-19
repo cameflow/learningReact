@@ -10,8 +10,8 @@ const Message = ({message,author}) => (
 
 
 Message.PropTypes = {
-  message: PropTypes.string.isRequired;
-  author: PropTypes.string.isRequired;
+  message: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired
 
 }
 

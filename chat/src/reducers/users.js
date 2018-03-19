@@ -1,6 +1,6 @@
 import * as types from '../constants/ActionTypes'
 
-const users = (state = [], actions) => {
+const users = (state = [], action) => {
   switch (action.type) {
     case types.ADD_USER:
       return state.concat([
